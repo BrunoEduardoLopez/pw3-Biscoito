@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { FrasesComponent } from '../frases/frases.component';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-imagem',
@@ -8,14 +7,5 @@ import { FrasesComponent } from '../frases/frases.component';
   styleUrl: './imagem.component.css'
 })
 export class ImagemComponent {
-  imagemBiscoito: string="biscoito.png"
-
-  public AbrirBiscoito(): void {
-    const images = {
-      opened: "/biscoito-aberto.png",
-      closed: "/biscoito.png"
-    };
-  
-    this.imagemBiscoito = this.imagemBiscoito === images.opened ? images.closed : images.opened;
-  }
+  @Input() imagemBiscoito: string = '';
 }

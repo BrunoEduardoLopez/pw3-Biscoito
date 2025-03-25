@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ImagemComponent } from '../imagem/imagem.component';
 
 @Component({
   selector: 'app-frases',
-  imports: [ImagemComponent],
+  imports: [],
   templateUrl: './frases.component.html',
   styleUrl: './frases.component.css'
 })
 export class FrasesComponent {
+  @Input() mostrarFrase: boolean = true;
+  @Input() fraseAtual: string = '';
+
   frases: string[] = [
     "A vida é o que acontece enquanto fazemos outros planos.",
     "O segredo do sucesso é a constância no propósito.",
@@ -21,24 +24,8 @@ export class FrasesComponent {
     "O único lugar onde o sucesso vem antes do trabalho é no dicionário."
   ];
 
-    imagemBiscoito: string="biscoito-aberto.png"
-    fraseAleatoria: string=""
-    
-  public exibirFrase(): void{
-    if (this.imagemBiscoito === "biscoito-aberto.png") {
-      this.fraseAleatoria = this.frases[Math.floor(Math.random() * this.frases.length)];
-    } else {
-      this.fraseAleatoria = "";
-    }
-  }
-
-  public AbrirBiscoito(): void {
-    const images = {
-      opened: "biscoito-aberto.png",
-      closed: "biscoito.png"
-    };
-
-    this.imagemBiscoito = this.imagemBiscoito === images.opened ? images.closed : images.opened;
-    this.exibirFrase();
+  SortearFrase(): string {
+    const indiceAleatorio = Math.floor(Math.random() * this.frases.length);
+    return this.frases[indiceAleatorio];
   }
 }
